@@ -2,8 +2,19 @@
 
 Ruby app which synchronises users with intercom
 
-#Install dependencies
+## Install dependencies
+
 `bundle`
 
-#Run the app
+## Install and start redis
+
+`brew install redis`
+`brew services start redis`
+
+## Run Sidekiq
+
+`bundle exec sidekiq -r ./app.rb`
+
+## Run the app
+
 `bundle exec rackup`
