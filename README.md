@@ -11,10 +11,14 @@ Ruby app which synchronises users with intercom
 `brew install redis`
 `brew services start redis`
 
-## Run Sidekiq
+<!-- ## Run Sidekiq
 
 `bundle exec sidekiq -r ./app.rb`
 
 ## Run the app
 
-`bundle exec rackup`
+`bundle exec rackup` -->
+
+## Run the app
+
+`foreman start`

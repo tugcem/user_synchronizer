@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'sinatra/base'
 require 'sidekiq'
 require 'sidekiq/api'
 require 'sidekiq/web'
