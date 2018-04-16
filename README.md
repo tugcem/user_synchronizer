@@ -1,28 +1,29 @@
 # User Synchronizer
+Ruby app which synchronises your users with Intercom asynchronously. It uses tags in intercom to specify user type and community info.
 
-Ruby app which synchronises users with intercom
+To start, please follow instructions below to run the app.
 
-## Install dependencies
+# Installation
 
-`bundle`
+- Ruby 2.5.1
+- `bundle` installs rubygems dependencies
+- `brew install redis` installs redis if applicable
+- `brew services start redis` starts redis
+- `export INTERCOM_ACCESS_TOKEN="#{INTERCOM_ACCESS_TOKEN}"` places your intercom access token in environment variable
+- `foreman start` runs the app!
+- `bundle exec rspec` runs the tests
 
-## Install and start redis
+# Usage
 
-`brew install redis`
-`brew services start redis`
+Try `/create_user` endpoint to create and update your users in intercom.
 
-<!-- ## Run Sidekiq
+## Create and update user example request
 
-`bundle exec sidekiq -r ./app.rb`
+`curl -X POST localhost:9292/create_user\
+ -d '{"name":"Faker Fake","email":"faker@fake.com","user_id":"99999999","helper": {"communities": [ { "name": "South Brisbane"}, { "name": "North Brisbane"} ]},"memberships":[{"name": "Eastern Suburbs"}, {"name": "Northern Suburbs"}]}'`
 
-## Run the app
+## Tips when sending request
 
-`bundle exec rackup` -->
-
-## Place your intercom access token in environment variables
-
-`export INTERCOM_ACCESS_TOKEN="#{INTERCOM_ACCESS_TOKEN}"`
-
-## Run the app
-
-`foreman start`
+- Please provide user_id all the time.
+- Set helper to `null` to remove helper tags from the user in intercom.
+- Set memberships to `[]` to remove member tags from the user in intercom.
