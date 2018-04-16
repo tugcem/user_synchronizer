@@ -10,13 +10,9 @@ RSpec.describe 'User Synchronizer App' do
   end
 
   describe "POST /create_user" do
+    let(:user) { File.read("spec/fixtures/user.json") }
     before do
-      data = {
-        name:   'Faker Fake',
-        email:  'faker@fake.com',
-        user_id:'99999999'
-      }
-      post '/create_user', data.to_json
+      post '/create_user', user
     end
     it "should return status 200" do
       expect(last_response.status).to eq 200
@@ -28,12 +24,7 @@ RSpec.describe 'User Synchronizer App' do
 
     it "should enqueue job to Users::CreateWorker" do
       expect do
-        data = {
-          name:   'Faker Fake',
-          email:  'faker@fake.com',
-          user_id:'99999999'
-        }
-        post '/create_user', data.to_json
+        post '/create_user', user
       end.to change(Users::CreateWorker.jobs, :size).by(1)
     end
   end
