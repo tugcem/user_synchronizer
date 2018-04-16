@@ -19,6 +19,10 @@ Ruby app which synchronises users with intercom
 
 `bundle exec rackup` -->
 
+## Place your intercom access token in environment variables
+
+`export INTERCOM_ACCESS_TOKEN="#{INTERCOM_ACCESS_TOKEN}"`
+
 ## Run the app
 
 `foreman start`

@@ -4,7 +4,8 @@ module Users
   class CreateWorker
   	include Sidekiq::Worker
   	def perform(params)
-      Users::Create.new(params)
+      user = Users::Create.new(params)
+      user.save
   	end
   end
 end
