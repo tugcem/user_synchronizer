@@ -22,6 +22,8 @@ Try `/create_user` endpoint to create and update your users in intercom.
 `curl -X POST localhost:9292/create_user\
  -d '{"name":"Faker Fake","email":"faker@fake.com","user_id":"99999999","helper": {"communities": [ { "name": "South Brisbane"}, { "name": "North Brisbane"} ]},"memberships":[{"name": "Eastern Suburbs"}, {"name": "Northern Suburbs"}]}'`
 
+As a result of user creation above, new user will be created in intercom with tags including `Helper in South Brisbane`, `Helper in North Brisbane`, `Member in Eastern Suburbs`, and `Member in Northern Suburbs`
+
 ## Tips when sending request
 
 - Please provide user_id all the time.
